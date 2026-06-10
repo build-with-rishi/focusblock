@@ -7,6 +7,11 @@ class OverlayWindowController {
     private var autoDismissTimer: Timer?
     private var challengeWord: String = ""
     private var typedCount: Int = 0
+    private var alarmSound: NSSound?
+
+    private static let ringtonesDirectory =
+        "/System/Library/PrivateFrameworks/ToneLibrary.framework/Versions/A/Resources/Ringtones"
+    private static let preferredRingtones = ["Alarm", "Radar", "Apex", "Beacon", "Presto"]
 
     private static let challengeWords = [
         "FOCUS", "COMMIT", "BEGIN", "ARRIVE", "PRESENT",
@@ -14,21 +19,26 @@ class OverlayWindowController {
     ]
 
     private static let quotes = [
-        "You don't have to be great to start, but you have to start to be great.",
-        "Procrastination is the thief of time.",
-        "The best way to get something done is to begin.",
-        "Action is the foundational key to all success.",
-        "You may delay, but time will not.",
-        "Amateurs sit and wait for inspiration. The rest of us just get up and go to work.",
-        "The secret of getting ahead is getting started.",
-        "Discipline is choosing between what you want now and what you want most.",
-        "A year from now you may wish you had started today.",
-        "Done is better than perfect.",
-        "How you do anything is how you do everything.",
-        "Motivation gets you going, habit keeps you showing up.",
-        "The meeting you dread is rarely as hard as the dread itself.",
-        "Show up. That's the whole secret.",
-        "Future you is watching what you do next."
+        "This meeting happens with or without your attention. Choose with.",
+        "Stop negotiating with yourself. Wrap up and show up.",
+        "You said yes to this. Honor it.",
+        "Avoiding it won't cancel it.",
+        "Five minutes of prep beats thirty minutes of apologizing.",
+        "Close the tabs. The meeting is the work now.",
+        "You don't need motivation. You need to stand up.",
+        "Every minute you stall, the meeting gets harder.",
+        "The dread dies the moment you start moving.",
+        "Showing up late is a decision. So is showing up ready.",
+        "Discomfort now or regret later. Pick one.",
+        "You're not in flow. You're avoiding.",
+        "Stop scrolling. Start moving.",
+        "Finish the sentence, save the file, go.",
+        "The work will wait. The meeting won't.",
+        "Your future self is begging you to get up now.",
+        "Nothing on your screen matters more than the next hour.",
+        "Be the person who walks in prepared.",
+        "Procrastination is fear wearing comfortable clothes.",
+        "Win the hour by walking in ready."
     ]
 
     func showOverlay(for event: EKEvent, minutesBefore: Int) {
@@ -60,12 +70,42 @@ class OverlayWindowController {
         }
 
         NSApp.activate(ignoringOtherApps: true)
-        playSound("Glass")
+        startAlarm()
 
         // Safety fallback: never leave the screens locked for more than 30 seconds
         autoDismissTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: false) { [weak self] _ in
             self?.dismissAll()
         }
+    }
+
+    // Real alarm ringtones (the iPhone alarm class), looped until dismissed.
+    // The ToneLibrary path is private and could move in a future macOS, so fall
+    // back to any available ringtone, then to a looped system alert sound.
+    private func startAlarm() {
+        let fileManager = FileManager.default
+        var sound: NSSound?
+
+        let candidates = Self.preferredRingtones.map { "\(Self.ringtonesDirectory)/\($0).m4r" }
+            + ((try? fileManager.contentsOfDirectory(atPath: Self.ringtonesDirectory)) ?? [])
+                .filter { $0.hasSuffix(".m4r") }
+                .map { "\(Self.ringtonesDirectory)/\($0)" }
+
+        for path in candidates where fileManager.fileExists(atPath: path) {
+            if let ringtone = NSSound(contentsOfFile: path, byReference: true) {
+                sound = ringtone
+                break
+            }
+        }
+
+        let alarm = sound ?? NSSound(named: "Sosumi")
+        alarm?.loops = true
+        alarm?.play()
+        alarmSound = alarm
+    }
+
+    private func stopAlarm() {
+        alarmSound?.stop()
+        alarmSound = nil
     }
 
     private func handleKey(_ event: NSEvent) {
@@ -79,13 +119,13 @@ class OverlayWindowController {
         if typedCount < word.count && typed == word[typedCount] {
             typedCount += 1
             if typedCount == word.count {
-                playSound("Hero")
                 dismissAll()
+                NSSound(named: "Hero")?.play()
                 return
             }
         } else {
             typedCount = 0
-            playSound("Basso")
+            NSSound(named: "Basso")?.play()
         }
 
         for view in contentViews {
@@ -93,11 +133,8 @@ class OverlayWindowController {
         }
     }
 
-    private func playSound(_ name: String) {
-        NSSound(named: name)?.play()
-    }
-
     func dismissAll() {
+        stopAlarm()
         autoDismissTimer?.invalidate()
         autoDismissTimer = nil
         for window in overlayWindows {

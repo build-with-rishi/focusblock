@@ -17,9 +17,9 @@ class OverlayContentView: NSView {
         typedCount = 0
 
         switch minutesBefore {
-        case 30: timeLabel = "in 30 minutes"
-        case 10: timeLabel = "in 10 minutes"
-        case 5:  timeLabel = "in 5 minutes"
+        case 30: timeLabel = "30 minutes"
+        case 10: timeLabel = "10 minutes"
+        case 5:  timeLabel = "5 minutes"
         default: timeLabel = "starting soon"
         }
 
@@ -66,41 +66,41 @@ class OverlayContentView: NSView {
 
         // Event title
         drawCentered(eventTitle, attributes: [
-            .font: NSFont.systemFont(ofSize: 52, weight: .semibold),
-            .foregroundColor: NSColor.white
-        ], centerX: centerX, y: centerY + 110)
+            .font: NSFont.systemFont(ofSize: 34, weight: .semibold),
+            .foregroundColor: NSColor(white: 0.85, alpha: 1.0)
+        ], centerX: centerX, y: centerY + 175)
 
-        // Time remaining
+        // Time to event — the dominant element
         drawCentered(timeLabel, attributes: [
-            .font: NSFont.systemFont(ofSize: 22, weight: .regular),
-            .foregroundColor: NSColor(white: 0.55, alpha: 1.0)
-        ], centerX: centerX, y: centerY + 60)
+            .font: NSFont.systemFont(ofSize: 96, weight: .heavy),
+            .foregroundColor: NSColor.white
+        ], centerX: centerX, y: centerY + 50)
 
         // Start time · duration
         drawCentered("\(startTimeLabel)  ·  \(durationLabel)", attributes: [
             .font: NSFont.systemFont(ofSize: 18, weight: .regular),
-            .foregroundColor: NSColor(white: 0.35, alpha: 1.0)
-        ], centerX: centerX, y: centerY + 25)
+            .foregroundColor: NSColor(white: 0.4, alpha: 1.0)
+        ], centerX: centerX, y: centerY + 15)
 
         // Quote — wrapped and centered
         let quoteParagraph = NSMutableParagraphStyle()
         quoteParagraph.alignment = .center
         let quoteAttrs: [NSAttributedString.Key: Any] = [
-            .font: NSFont.systemFont(ofSize: 20, weight: .regular).withItalics(),
-            .foregroundColor: NSColor(white: 0.7, alpha: 1.0),
+            .font: NSFont.systemFont(ofSize: 26, weight: .medium).withItalics(),
+            .foregroundColor: NSColor(white: 0.8, alpha: 1.0),
             .paragraphStyle: quoteParagraph
         ]
         let quoteText = "\u{201C}\(quote)\u{201D}" as NSString
-        let quoteWidth = min(bounds.width - 200, 760)
+        let quoteWidth = min(bounds.width - 200, 860)
         let quoteBounds = quoteText.boundingRect(
-            with: NSSize(width: quoteWidth, height: 200),
+            with: NSSize(width: quoteWidth, height: 220),
             options: [.usesLineFragmentOrigin],
             attributes: quoteAttrs
         )
         quoteText.draw(
             in: NSRect(
                 x: centerX - quoteWidth / 2,
-                y: centerY - 50 - quoteBounds.height,
+                y: centerY - 60 - quoteBounds.height,
                 width: quoteWidth,
                 height: quoteBounds.height
             ),
@@ -109,7 +109,7 @@ class OverlayContentView: NSView {
 
         // Challenge word — typed letters bright, remaining letters dim
         let challenge = NSMutableAttributedString()
-        let letterFont = NSFont.monospacedSystemFont(ofSize: 38, weight: .bold)
+        let letterFont = NSFont.monospacedSystemFont(ofSize: 40, weight: .bold)
         for (index, letter) in challengeWord.uppercased().enumerated() {
             let color = index < typedCount ? NSColor.white : NSColor(white: 0.28, alpha: 1.0)
             challenge.append(NSAttributedString(string: String(letter), attributes: [
@@ -119,7 +119,7 @@ class OverlayContentView: NSView {
             ]))
         }
         let challengeSize = challenge.size()
-        challenge.draw(at: NSPoint(x: centerX - challengeSize.width / 2, y: centerY - 175))
+        challenge.draw(at: NSPoint(x: centerX - challengeSize.width / 2, y: centerY - 205))
 
         // Dismiss hint
         drawCentered("type the word above to dismiss", attributes: [
