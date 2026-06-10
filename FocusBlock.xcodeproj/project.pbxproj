@@ -1,0 +1,269 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FB00000100000000000000A1 /* FocusBlockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A1 /* FocusBlockApp.swift */; };
+		FB00000100000000000000A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A2 /* AppDelegate.swift */; };
+		FB00000100000000000000A3 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A3 /* CalendarManager.swift */; };
+		FB00000100000000000000A4 /* OverlayWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A4 /* OverlayWindowController.swift */; };
+		FB00000100000000000000A5 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A5 /* OverlayWindow.swift */; };
+		FB00000100000000000000A6 /* OverlayContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A6 /* OverlayContentView.swift */; };
+		FB00000100000000000000A7 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A7 /* StatusBarController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FB00000200000000000000A1 /* FocusBlockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusBlockApp.swift; sourceTree = "<group>"; };
+		FB00000200000000000000A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FB00000200000000000000A3 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		FB00000200000000000000A4 /* OverlayWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindowController.swift; sourceTree = "<group>"; };
+		FB00000200000000000000A5 /* OverlayWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayWindow.swift; sourceTree = "<group>"; };
+		FB00000200000000000000A6 /* OverlayContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayContentView.swift; sourceTree = "<group>"; };
+		FB00000200000000000000A7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		FB00000200000000000000A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB00000200000000000000B1 /* FocusBlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusBlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FB00000300000000000000C1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FB00000400000000000000D1 = {
+			isa = PBXGroup;
+			children = (
+				FB00000400000000000000D2 /* FocusBlock */,
+				FB00000400000000000000D3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FB00000400000000000000D2 /* FocusBlock */ = {
+			isa = PBXGroup;
+			children = (
+				FB00000200000000000000A1 /* FocusBlockApp.swift */,
+				FB00000200000000000000A2 /* AppDelegate.swift */,
+				FB00000200000000000000A3 /* CalendarManager.swift */,
+				FB00000200000000000000A4 /* OverlayWindowController.swift */,
+				FB00000200000000000000A5 /* OverlayWindow.swift */,
+				FB00000200000000000000A6 /* OverlayContentView.swift */,
+				FB00000200000000000000A7 /* StatusBarController.swift */,
+				FB00000200000000000000A8 /* Info.plist */,
+			);
+			path = FocusBlock;
+			sourceTree = "<group>";
+		};
+		FB00000400000000000000D3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FB00000200000000000000B1 /* FocusBlock.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FB00000500000000000000E1 /* FocusBlock */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FB00000600000000000000F1 /* Build configuration list for PBXNativeTarget "FocusBlock" */;
+			buildPhases = (
+				FB00000300000000000000C2 /* Sources */,
+				FB00000300000000000000C1 /* Frameworks */,
+				FB00000300000000000000C3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FocusBlock;
+			productName = FocusBlock;
+			productReference = FB00000200000000000000B1 /* FocusBlock.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FB00000700000000000000F2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					FB00000500000000000000E1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = FB00000600000000000000F3 /* Build configuration list for PBXProject "FocusBlock" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FB00000400000000000000D1;
+			productRefGroup = FB00000400000000000000D3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FB00000500000000000000E1 /* FocusBlock */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FB00000300000000000000C3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FB00000300000000000000C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB00000100000000000000A1 /* FocusBlockApp.swift in Sources */,
+				FB00000100000000000000A2 /* AppDelegate.swift in Sources */,
+				FB00000100000000000000A3 /* CalendarManager.swift in Sources */,
+				FB00000100000000000000A4 /* OverlayWindowController.swift in Sources */,
+				FB00000100000000000000A5 /* OverlayWindow.swift in Sources */,
+				FB00000100000000000000A6 /* OverlayContentView.swift in Sources */,
+				FB00000100000000000000A7 /* StatusBarController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FB00000800000000000000G1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FB00000800000000000000G2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FB00000800000000000000G3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FocusBlock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rishi.focusblock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FB00000800000000000000G4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FocusBlock/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rishi.focusblock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FB00000600000000000000F1 /* Build configuration list for PBXNativeTarget "FocusBlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB00000800000000000000G3 /* Debug */,
+				FB00000800000000000000G4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FB00000600000000000000F3 /* Build configuration list for PBXProject "FocusBlock" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FB00000800000000000000G1 /* Debug */,
+				FB00000800000000000000G2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FB00000700000000000000F2 /* Project object */;
+}
