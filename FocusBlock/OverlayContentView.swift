@@ -6,9 +6,15 @@ class OverlayContentView: NSView {
     private var timeLabel: String = ""
     private var startTimeLabel: String = ""
     private var durationLabel: String = ""
+    private var quote: String = ""
+    private var challengeWord: String = ""
+    private var typedCount: Int = 0
 
-    func configure(event: EKEvent, minutesBefore: Int) {
+    func configure(event: EKEvent, minutesBefore: Int, quote: String, challengeWord: String) {
         eventTitle = event.title ?? "Upcoming Event"
+        self.quote = quote
+        self.challengeWord = challengeWord
+        typedCount = 0
 
         switch minutesBefore {
         case 30: timeLabel = "in 30 minutes"
@@ -38,6 +44,19 @@ class OverlayContentView: NSView {
         setNeedsDisplay(bounds)
     }
 
+    func update(typedCount: Int) {
+        self.typedCount = typedCount
+        setNeedsDisplay(bounds)
+    }
+
+    private func drawCentered(_ text: String, attributes: [NSAttributedString.Key: Any], centerX: CGFloat, y: CGFloat) {
+        let size = (text as NSString).size(withAttributes: attributes)
+        (text as NSString).draw(
+            at: NSPoint(x: centerX - size.width / 2, y: y),
+            withAttributes: attributes
+        )
+    }
+
     override func draw(_ dirtyRect: NSRect) {
         NSColor.black.setFill()
         dirtyRect.fill()
@@ -46,49 +65,72 @@ class OverlayContentView: NSView {
         let centerY = bounds.midY
 
         // Event title
-        let titleAttrs: [NSAttributedString.Key: Any] = [
+        drawCentered(eventTitle, attributes: [
             .font: NSFont.systemFont(ofSize: 52, weight: .semibold),
             .foregroundColor: NSColor.white
-        ]
-        let titleSize = (eventTitle as NSString).size(withAttributes: titleAttrs)
-        (eventTitle as NSString).draw(
-            at: NSPoint(x: centerX - titleSize.width / 2, y: centerY + 10),
-            withAttributes: titleAttrs
-        )
+        ], centerX: centerX, y: centerY + 110)
 
         // Time remaining
-        let timeAttrs: [NSAttributedString.Key: Any] = [
+        drawCentered(timeLabel, attributes: [
             .font: NSFont.systemFont(ofSize: 22, weight: .regular),
             .foregroundColor: NSColor(white: 0.55, alpha: 1.0)
-        ]
-        let timeSize = (timeLabel as NSString).size(withAttributes: timeAttrs)
-        (timeLabel as NSString).draw(
-            at: NSPoint(x: centerX - timeSize.width / 2, y: centerY - 40),
-            withAttributes: timeAttrs
-        )
+        ], centerX: centerX, y: centerY + 60)
 
-        // Start time
-        let startAttrs: [NSAttributedString.Key: Any] = [
+        // Start time · duration
+        drawCentered("\(startTimeLabel)  ·  \(durationLabel)", attributes: [
             .font: NSFont.systemFont(ofSize: 18, weight: .regular),
             .foregroundColor: NSColor(white: 0.35, alpha: 1.0)
+        ], centerX: centerX, y: centerY + 25)
+
+        // Quote — wrapped and centered
+        let quoteParagraph = NSMutableParagraphStyle()
+        quoteParagraph.alignment = .center
+        let quoteAttrs: [NSAttributedString.Key: Any] = [
+            .font: NSFont.systemFont(ofSize: 20, weight: .regular).withItalics(),
+            .foregroundColor: NSColor(white: 0.7, alpha: 1.0),
+            .paragraphStyle: quoteParagraph
         ]
-        let startFull = "\(startTimeLabel)  ·  \(durationLabel)"
-        let startSize = (startFull as NSString).size(withAttributes: startAttrs)
-        (startFull as NSString).draw(
-            at: NSPoint(x: centerX - startSize.width / 2, y: centerY - 75),
-            withAttributes: startAttrs
+        let quoteText = "\u{201C}\(quote)\u{201D}" as NSString
+        let quoteWidth = min(bounds.width - 200, 760)
+        let quoteBounds = quoteText.boundingRect(
+            with: NSSize(width: quoteWidth, height: 200),
+            options: [.usesLineFragmentOrigin],
+            attributes: quoteAttrs
+        )
+        quoteText.draw(
+            in: NSRect(
+                x: centerX - quoteWidth / 2,
+                y: centerY - 50 - quoteBounds.height,
+                width: quoteWidth,
+                height: quoteBounds.height
+            ),
+            withAttributes: quoteAttrs
         )
 
+        // Challenge word — typed letters bright, remaining letters dim
+        let challenge = NSMutableAttributedString()
+        let letterFont = NSFont.monospacedSystemFont(ofSize: 38, weight: .bold)
+        for (index, letter) in challengeWord.uppercased().enumerated() {
+            let color = index < typedCount ? NSColor.white : NSColor(white: 0.28, alpha: 1.0)
+            challenge.append(NSAttributedString(string: String(letter), attributes: [
+                .font: letterFont,
+                .foregroundColor: color,
+                .kern: 14
+            ]))
+        }
+        let challengeSize = challenge.size()
+        challenge.draw(at: NSPoint(x: centerX - challengeSize.width / 2, y: centerY - 175))
+
         // Dismiss hint
-        let hintAttrs: [NSAttributedString.Key: Any] = [
+        drawCentered("type the word above to dismiss", attributes: [
             .font: NSFont.systemFont(ofSize: 13, weight: .regular),
-            .foregroundColor: NSColor(white: 0.2, alpha: 1.0)
-        ]
-        let hint = "click or press any key to dismiss"
-        let hintSize = (hint as NSString).size(withAttributes: hintAttrs)
-        (hint as NSString).draw(
-            at: NSPoint(x: centerX - hintSize.width / 2, y: 40),
-            withAttributes: hintAttrs
-        )
+            .foregroundColor: NSColor(white: 0.3, alpha: 1.0)
+        ], centerX: centerX, y: 40)
+    }
+}
+
+private extension NSFont {
+    func withItalics() -> NSFont {
+        NSFontManager.shared.convert(self, toHaveTrait: .italicFontMask)
     }
 }

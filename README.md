@@ -8,8 +8,11 @@ before a meeting starts.
 - No third-party dependencies — EventKit + AppKit only
 - Works with Google Calendar via macOS Internet Accounts sync (no API keys, no OAuth)
 - Alerts at 30 / 10 / 5 minutes before each event (each window toggleable)
-- Overlay covers every connected screen, sits above fullscreen apps, auto-dismisses
-  after 8 seconds, or on any click / keypress
+- Overlay covers every connected screen and sits above fullscreen apps
+- Plays a native macOS alert sound and shows a random anti-procrastination quote
+- Hard to skip: you must type the random challenge word shown on screen to
+  dismiss it — a wrong letter resets your progress. Auto-dismisses after
+  30 seconds as a safety fallback only.
 
 ## Build & Run (Xcode)
 
@@ -42,6 +45,11 @@ open build/FocusBlock.app
 
 - Requires macOS 13 (Ventura) or later.
 - Calendar permission lives in System Settings > Privacy & Security > Calendars.
-- Dismiss the overlay with any key or mouse click; it also auto-dismisses after 8 seconds.
+- Dismiss the overlay by typing the challenge word it shows; it auto-dismisses
+  after 30 seconds if you walk away.
+- If Google events are missing, subscribe to the calendar in Apple Calendar
+  (File > New Calendar Subscription with your Google calendar's public/secret
+  ICS link) or enable Calendars for your Google account in System Settings >
+  Internet Accounts.
 - "Launch at Login" uses Apple's `SMAppService`, so it appears under
   System Settings > General > Login Items.

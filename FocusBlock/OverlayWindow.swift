@@ -1,7 +1,7 @@
 import AppKit
 
 class OverlayWindow: NSWindow {
-    var onDismiss: (() -> Void)?
+    var onKeyEvent: ((NSEvent) -> Void)?
 
     init(screen: NSScreen) {
         // The screen: variant is a convenience initializer and can't be called
@@ -32,10 +32,6 @@ class OverlayWindow: NSWindow {
     override var canBecomeMain: Bool { true }
 
     override func keyDown(with event: NSEvent) {
-        onDismiss?()
-    }
-
-    override func mouseDown(with event: NSEvent) {
-        onDismiss?()
+        onKeyEvent?(event)
     }
 }
