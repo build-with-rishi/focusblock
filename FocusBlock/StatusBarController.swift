@@ -68,6 +68,20 @@ class StatusBarController {
 
         menu.addItem(.separator())
 
+        // Alarm sound picker
+        let soundItem = NSMenuItem(title: "Alarm Sound", action: nil, keyEquivalent: "")
+        let soundMenu = NSMenu()
+        for name in AlarmSound.availableNames() {
+            let item = NSMenuItem(title: name, action: #selector(selectAlarmSound(_:)), keyEquivalent: "")
+            item.target = self
+            item.state = name == AlarmSound.selectedName ? .on : .off
+            soundMenu.addItem(item)
+        }
+        soundItem.submenu = soundMenu
+        menu.addItem(soundItem)
+
+        menu.addItem(.separator())
+
         // Launch at login
         let loginItem = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin), keyEquivalent: "")
         loginItem.target = self
@@ -95,6 +109,14 @@ class StatusBarController {
             calendarManager.enabledWindows.insert(minutes)
             sender.state = .on
         }
+    }
+
+    @objc private func selectAlarmSound(_ sender: NSMenuItem) {
+        AlarmSound.selectedName = sender.title
+        for item in sender.menu?.items ?? [] {
+            item.state = item == sender ? .on : .off
+        }
+        AlarmSound.preview()
     }
 
     @objc private func toggleLaunchAtLogin() {

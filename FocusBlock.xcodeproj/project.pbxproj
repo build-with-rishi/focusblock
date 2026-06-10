@@ -14,6 +14,7 @@
 		FB00000100000000000000A5 /* OverlayWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A5 /* OverlayWindow.swift */; };
 		FB00000100000000000000A6 /* OverlayContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A6 /* OverlayContentView.swift */; };
 		FB00000100000000000000A7 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A7 /* StatusBarController.swift */; };
+		FB00000100000000000000A9 /* AlarmSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB00000200000000000000A9 /* AlarmSound.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		FB00000200000000000000A6 /* OverlayContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayContentView.swift; sourceTree = "<group>"; };
 		FB00000200000000000000A7 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		FB00000200000000000000A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB00000200000000000000A9 /* AlarmSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSound.swift; sourceTree = "<group>"; };
 		FB00000200000000000000B1 /* FocusBlock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusBlock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 				FB00000200000000000000A5 /* OverlayWindow.swift */,
 				FB00000200000000000000A6 /* OverlayContentView.swift */,
 				FB00000200000000000000A7 /* StatusBarController.swift */,
+				FB00000200000000000000A9 /* AlarmSound.swift */,
 				FB00000200000000000000A8 /* Info.plist */,
 			);
 			path = FocusBlock;
@@ -145,6 +148,7 @@
 				FB00000100000000000000A5 /* OverlayWindow.swift in Sources */,
 				FB00000100000000000000A6 /* OverlayContentView.swift in Sources */,
 				FB00000100000000000000A7 /* StatusBarController.swift in Sources */,
+				FB00000100000000000000A9 /* AlarmSound.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

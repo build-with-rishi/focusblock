@@ -9,10 +9,6 @@ class OverlayWindowController {
     private var typedCount: Int = 0
     private var alarmSound: NSSound?
 
-    private static let ringtonesDirectory =
-        "/System/Library/PrivateFrameworks/ToneLibrary.framework/Versions/A/Resources/Ringtones"
-    private static let preferredRingtones = ["Alarm", "Radar", "Apex", "Beacon", "Presto"]
-
     private static let challengeWords = [
         "FOCUS", "COMMIT", "BEGIN", "ARRIVE", "PRESENT",
         "DELIVER", "ENGAGE", "PREPARE", "SHOWUP", "READY"
@@ -78,26 +74,9 @@ class OverlayWindowController {
         }
     }
 
-    // Real alarm ringtones (the iPhone alarm class), looped until dismissed.
-    // The ToneLibrary path is private and could move in a future macOS, so fall
-    // back to any available ringtone, then to a looped system alert sound.
     private func startAlarm() {
-        let fileManager = FileManager.default
-        var sound: NSSound?
-
-        let candidates = Self.preferredRingtones.map { "\(Self.ringtonesDirectory)/\($0).m4r" }
-            + ((try? fileManager.contentsOfDirectory(atPath: Self.ringtonesDirectory)) ?? [])
-                .filter { $0.hasSuffix(".m4r") }
-                .map { "\(Self.ringtonesDirectory)/\($0)" }
-
-        for path in candidates where fileManager.fileExists(atPath: path) {
-            if let ringtone = NSSound(contentsOfFile: path, byReference: true) {
-                sound = ringtone
-                break
-            }
-        }
-
-        let alarm = sound ?? NSSound(named: "Sosumi")
+        AlarmSound.stopPreview()
+        let alarm = AlarmSound.makeSound()
         alarm?.loops = true
         alarm?.play()
         alarmSound = alarm
