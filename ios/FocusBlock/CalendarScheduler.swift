@@ -220,7 +220,9 @@ final class CalendarScheduler: ObservableObject {
     // few times a day, never on a guaranteed schedule). It only re-anchors the
     // pending notifications to the latest calendar data; actual alert delivery
     // never depends on this task running.
-    static func scheduleAppRefresh() {
+    // nonisolated: called from the nonisolated BGTask handler; touches only
+    // BGTaskScheduler (thread-safe) and an immutable identifier.
+    nonisolated static func scheduleAppRefresh() {
         let request = BGAppRefreshTaskRequest(identifier: backgroundTaskIdentifier)
         request.earliestBeginDate = Date(timeIntervalSinceNow: 15 * 60)
         try? BGTaskScheduler.shared.submit(request)
