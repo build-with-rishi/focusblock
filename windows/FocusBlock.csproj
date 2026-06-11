@@ -16,4 +16,12 @@
     <Description>Calendar-driven full-screen focus overlays</Description>
   </PropertyGroup>
 
+  <!-- UseWindowsForms injects global usings for System.Windows.Forms and
+       System.Drawing, which collide with WPF types (Application, Brushes,
+       Color, …). Remove them; files that need WinForms import it locally. -->
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
 </Project>

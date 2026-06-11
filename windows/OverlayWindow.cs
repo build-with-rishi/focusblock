@@ -77,12 +77,12 @@ public sealed class OverlayWindow : Window
         _challengePanel = new StackPanel
         {
             Orientation = Orientation.Horizontal,
-            HorizontalAlignment = HorizontalAlignment.Center
+            HorizontalAlignment = System.Windows.HorizontalAlignment.Center
         };
 
         var stack = new StackPanel
         {
-            HorizontalAlignment = HorizontalAlignment.Center,
+            HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center
         };
         stack.Children.Add(_titleText);
@@ -217,7 +217,7 @@ public sealed class OverlayWindow : Window
         FontSize = size,
         FontWeight = weight,
         Foreground = brush,
-        HorizontalAlignment = HorizontalAlignment.Center
+        HorizontalAlignment = System.Windows.HorizontalAlignment.Center
     };
 
     private static SolidColorBrush Gray(byte value)
