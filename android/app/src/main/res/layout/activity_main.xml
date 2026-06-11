@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:id="@+id/status_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/permissions_missing"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/grant_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/grant_permissions" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/alert_windows_header"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/check_30"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/window_30" />
+
+        <CheckBox
+            android:id="@+id/check_10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/window_10" />
+
+        <CheckBox
+            android:id="@+id/check_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/window_5" />
+
+        <TextView
+            android:id="@+id/next_event_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/next_event_none"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/test_overlay_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/test_overlay" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/battery_hint"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/battery_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/battery_settings" />
+
+        <TextView
+            android:id="@+id/fullscreen_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/fullscreen_intent_hint"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/fullscreen_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/fullscreen_intent_settings"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</ScrollView>
