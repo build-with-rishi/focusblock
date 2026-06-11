@@ -1,0 +1,23 @@
+name: iOS
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['ios/**', '.github/workflows/ios.yml']
+  pull_request:
+    paths: ['ios/**', '.github/workflows/ios.yml']
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build for iOS Simulator
+        # -target (not -scheme): the hand-written project has no shared scheme.
+        # Signing disabled: simulator builds need none.
+        run: |
+          cd ios
+          xcodebuild -project FocusBlock.xcodeproj -target FocusBlock \
+            -configuration Debug -sdk iphonesimulator \
+            CODE_SIGNING_ALLOWED=NO build
