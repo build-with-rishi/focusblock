@@ -27,5 +27,5 @@ First public release.
 - Open-source packaging: MIT license, contribution guide, issue/PR templates,
   CI builds.
 
-[Unreleased]: https://github.com/buildwithrishi/focusblock/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/buildwithrishi/focusblock/releases/tag/v1.0.0
+[Unreleased]: https://github.com/build-with-rishi/focusblock/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/build-with-rishi/focusblock/releases/tag/v1.0.0
