@@ -1,3 +1,18 @@
+# macOS / Xcode
 build/
 xcuserdata/
+DerivedData/
 .DS_Store
+
+# Android
+android/.gradle/
+android/local.properties
+android/.idea/
+android/captures/
+*.apk
+*.aab
+
+# Windows / .NET
+windows/bin/
+windows/obj/
+windows/.vs/

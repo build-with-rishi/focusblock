@@ -1,0 +1,27 @@
+name: macOS
+
+on:
+  push:
+    branches: [main]
+    paths: ['macos/**', '.github/workflows/macos.yml']
+  pull_request:
+    paths: ['macos/**', '.github/workflows/macos.yml']
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: Typecheck (zero warnings)
+        run: |
+          cd macos
+          swiftc -typecheck -warnings-as-errors \
+            -sdk "$(xcrun --show-sdk-path --sdk macosx)" \
+            -target arm64-apple-macos13.0 FocusBlock/*.swift
+      - name: Build app bundle
+        run: |
+          cd macos
+          mkdir -p build/FocusBlock.app/Contents/MacOS
+          swiftc -O -sdk "$(xcrun --show-sdk-path --sdk macosx)" \
+            -target arm64-apple-macos13.0 \
+            FocusBlock/*.swift -o build/FocusBlock.app/Contents/MacOS/FocusBlock
