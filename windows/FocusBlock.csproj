@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>FocusBlock</RootNamespace>
+    <AssemblyName>FocusBlock</AssemblyName>
+    <UseWPF>true</UseWPF>
+    <!-- WinForms is referenced only for NotifyIcon (tray icon) and Screen enumeration. -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Per-monitor V2 DPI awareness so overlays cover full physical screens. -->
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.0.0</Version>
+    <Description>Calendar-driven full-screen focus overlays</Description>
+  </PropertyGroup>
+
+</Project>
