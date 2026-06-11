@@ -5,6 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
+using Brush = System.Windows.Media.Brush;
+using KeyEventArgs = System.Windows.Input.KeyEventArgs;
 
 namespace FocusBlock;
 
