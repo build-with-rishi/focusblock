@@ -16,3 +16,6 @@ android/captures/
 windows/bin/
 windows/obj/
 windows/.vs/
+
+# Distribution artifacts
+macos/dist/
